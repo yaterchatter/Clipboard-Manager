@@ -13,24 +13,19 @@ namespace Clipboard_Manager
         [STAThread]
         static void Main(string[] args)
         {
-            object prevObj = 0;
-
+            string prevString = null;
+            List<string> strings = new List<string>();
             while (true)
             {
                 //compare
-                if (prevObj == Clipboard.GetDataObject())
-                {
-                    //do nothing
-                    MessageBox.Show("Nothing");
-                }
-                else
+                if (prevString != Clipboard.GetText())
                 {
                     if (Clipboard.ContainsText())
                     {
-                        string txt = Clipboard.GetText();                        
-                        object obj = Clipboard.GetDataObject();
+                        string txt = Clipboard.GetText();
+                        strings.Add(txt);
 
-                        prevObj = obj;
+                        prevString = txt;
                         //set type and data in the database
                         MessageBox.Show(txt);
                     }
@@ -48,7 +43,7 @@ namespace Clipboard_Manager
                     }
                     else
                     {
-                        MessageBox.Show("Error: Clipboard contains unrecognized ");
+                        MessageBox.Show("Error: Clipboard contains unrecognized stuff");
                     }
                 }
                 Thread.Sleep(250);
