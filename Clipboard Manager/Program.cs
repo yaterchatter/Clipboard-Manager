@@ -27,20 +27,20 @@ namespace Clipboard_Manager
 
                         prevString = txt;
                         //set type and data in the database
-                        MessageBox.Show(txt);
+                        //MessageBox.Show(txt);
                     }
                     else if (Clipboard.ContainsFileDropList())
                     {
 
                     }
                     else if (Clipboard.ContainsImage())
-                    {
+                    {                        
 
                     }
                     else if (Clipboard.ContainsAudio())
                     {
 
-                    }
+                    }                    
                     else
                     {
                         MessageBox.Show("Error: Clipboard contains unrecognized stuff");
